@@ -5,11 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CalculateurDeVeriteTest {
     @Test
-    void test_des_valeurs_de_varite (){
+    void test_des_valeur_de_verite (){
         var verite = new Verite("Lou est beau");
         var mensonge = new Monsonge("Lou est pauvre");
         var incertitude = new Incertitude("Lou est généreux");
-        var reponse1 = new CalculateurDeVerite(verite , mensonge , "donc").donnerLaReponse();
-        assertTrue(reponse1.);
+        assertTrue(!mensonge.isValeurDeVerite() && !mensonge.isIncertitude());
+        assertTrue(verite.isValeurDeVerite() && !verite.isIncertitude());
+        assertTrue(incertitude.isIncertitude());
     }
 }
