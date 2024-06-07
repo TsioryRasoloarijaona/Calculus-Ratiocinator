@@ -17,25 +17,29 @@ public class CalculateurDeVerite {
 
     public reponse donnerLaReponse (){
         reponse reponse = null ;
-
         if (affirmation1.isIncertitude() || affirmation2.isIncertitude()){
             reponse = reponse.jenesaispas;
-        }else {
+        }
           if (conjonction == "et"){
-          return reponse = affirmation1.isValeurDeVerite() && affirmation2.isValeurDeVerite()? reponse.vrai : reponse.faux ;
+           reponse = affirmation1.isValeurDeVerite() && affirmation2.isValeurDeVerite()? reponse.vrai : reponse.faux ;
         }
           if (conjonction == "ou"){
-          return  reponse = affirmation1.isValeurDeVerite() || affirmation2.isValeurDeVerite() ? reponse.vrai : reponse.faux;
+            reponse = affirmation1.isValeurDeVerite() || affirmation2.isValeurDeVerite() ? reponse.vrai : reponse.faux;
         }
           if (conjonction == "donc"){
-           return reponse = affirmation1.isValeurDeVerite() && !affirmation2.isValeurDeVerite() ? reponse.faux : reponse.vrai;
+              reponse = affirmation1.isValeurDeVerite() && !affirmation2.isValeurDeVerite() ? reponse.faux : reponse.vrai;
         }
 
-        }
-
-        return reponse;
+          return reponse;
 
     }
 
-
+    @Override
+    public String toString() {
+        return "CalculateurDeVerite{" +
+                "affirmation1=" + affirmation1 +
+                ", affirmation2=" + affirmation2 +
+                ", conjonction='" + conjonction + '\'' +
+                '}';
+    }
 }
