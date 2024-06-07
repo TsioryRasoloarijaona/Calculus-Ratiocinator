@@ -1,6 +1,5 @@
 package com.STD22109;
 
-import java.util.List;
 
 public class CalculateurDeVerite {
 
@@ -36,22 +35,13 @@ public class CalculateurDeVerite {
             if (conjonction == "donc") {
                 reponse = affirmation1.isValeurDeVerite() && !affirmation2.isValeurDeVerite() ? reponse.faux :
                         affirmation1.isIncertitude() || affirmation2.isIncertitude() ? reponse.jenesaispas : reponse.vrai;
-                ;
+
             }
+            reponse = reponse.jenesaispas;
         }
 
         return reponse;
 
     }
 
-
-
-    @Override
-    public String toString() {
-        return "CalculateurDeVerite{" +
-                "affirmation1=" + affirmation1 +
-                ", affirmation2=" + affirmation2 +
-                ", conjonction='" + conjonction + '\'' +
-                '}';
-    }
 }

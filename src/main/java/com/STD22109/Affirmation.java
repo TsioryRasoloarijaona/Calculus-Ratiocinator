@@ -1,6 +1,6 @@
 package com.STD22109;
 
-public class Affirmation {
+public sealed class  Affirmation permits Verite , Monsonge , Incertitude{
     private String phrase;
     private boolean valeurDeVerite;
     private boolean incertitude;
