@@ -1,11 +1,13 @@
 package com.STD22109;
 
+import java.util.List;
+
 public class CalculateurDeVerite {
 
     private Affirmation affirmation1;
     private Affirmation affirmation2;
 
-    enum reponse {
+    public enum reponse {
         vrai, faux, jenesaispas
     }
 
@@ -20,25 +22,29 @@ public class CalculateurDeVerite {
     public reponse donnerLaReponse() {
         reponse reponse = null;
 
-        if (!affirmation1.isIncertitude() && !affirmation2.isIncertitude()) {
-            if (affirmation1.isIncertitude() || affirmation2.isIncertitude()) {
-                reponse = reponse.jenesaispas;
-            }
+        if (affirmation1.isIncertitude() && affirmation2.isIncertitude()) {
+            reponse = reponse.jenesaispas;
+        } else {
+
             if (conjonction == "et") {
-                reponse = affirmation1.isValeurDeVerite() && affirmation2.isValeurDeVerite() ? reponse.vrai : reponse.faux;
+                reponse = affirmation1.isValeurDeVerite() && affirmation2.isValeurDeVerite() ? reponse.vrai :
+                        affirmation1.isIncertitude() || affirmation2.isIncertitude() ? reponse.jenesaispas : reponse.faux;
             }
             if (conjonction == "ou") {
                 reponse = affirmation1.isValeurDeVerite() || affirmation2.isValeurDeVerite() ? reponse.vrai : reponse.faux;
             }
             if (conjonction == "donc") {
-                reponse = affirmation1.isValeurDeVerite() && !affirmation2.isValeurDeVerite() ? reponse.faux : reponse.vrai;
+                reponse = affirmation1.isValeurDeVerite() && !affirmation2.isValeurDeVerite() ? reponse.faux :
+                        affirmation1.isIncertitude() || affirmation2.isIncertitude() ? reponse.jenesaispas : reponse.vrai;
+                ;
             }
-
         }
 
         return reponse;
 
     }
+
+
 
     @Override
     public String toString() {
